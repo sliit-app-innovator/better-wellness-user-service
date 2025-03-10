@@ -1,6 +1,5 @@
 package com.sliit.betterwellness.dto;
 
-import com.sliit.betterwellness.entity.Counsellor;
 import com.sliit.betterwellness.entity.Customer;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
