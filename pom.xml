@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.betterwellness</groupId>
-	<artifactId>betterwellness</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>better-wellness-user-api</artifactId>
+	<version>1.0.0</version>
 	<name>betterwellness</name>
 	<description>Better Wellness project for Spring Boot</description>
 	<url/>
