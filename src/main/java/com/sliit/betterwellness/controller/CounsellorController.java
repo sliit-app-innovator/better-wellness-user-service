@@ -1,6 +1,7 @@
 package com.sliit.betterwellness.controller;
 
 import com.sliit.betterwellness.dto.CounsellorDTO;
+import com.sliit.betterwellness.dto.CounsellorsDTO;
 import com.sliit.betterwellness.service.CounsellorService;
 import com.sliit.betterwellness.utills.Constants;
 import lombok.extern.slf4j.Slf4j;
@@ -32,9 +33,11 @@ public class CounsellorController {
 	}
 
 	@GetMapping("/counsellor")
-	public ResponseEntity<List<CounsellorDTO>> searchUser(@RequestParam(name = "search", required = false, defaultValue = "") String search, @RequestHeader Map<String, String> headers){
+	public ResponseEntity<CounsellorsDTO> searchUser(@RequestParam(name = "search", required = false, defaultValue = "") String search, @RequestHeader Map<String, String> headers){
 	//	log.info("Counsellor search request correlation-id : {}", headers.get(Constants.HEADER_CORRELATION_ID));
-		return ResponseEntity.status(HttpStatus.OK).body(counsellorService.searchCounsellor(search));
+		CounsellorsDTO response = new CounsellorsDTO();
+		response.setCounsellors(counsellorService.searchCounsellor(search));
+		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 
 	@GetMapping("/counsellor/{counsellorId}")
