@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/better-wellness")
+@RequestMapping("/better-wellness/user")
 @Slf4j
 public class CustomerController {
 
