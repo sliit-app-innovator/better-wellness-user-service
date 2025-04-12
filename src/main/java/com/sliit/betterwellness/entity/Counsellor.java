@@ -25,8 +25,11 @@ public class Counsellor {
 	@Column(nullable = false, length = 50)
 	private String lastName;
 
-	@Column(nullable = false, length = 4000)
+	@Column(nullable = false, length = 100)
 	private String specializations;
+
+	@Column(nullable = true, length = 4000)
+	private String description;
 
 	@Column
 	private Date lastLoginAt;
@@ -110,6 +113,14 @@ public class Counsellor {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public CounsellorDTO toDto() {

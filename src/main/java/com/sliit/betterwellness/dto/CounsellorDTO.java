@@ -13,6 +13,7 @@ public class CounsellorDTO {
 	private String firstName;
 	private String lastName;
 	private String specializations;
+	private String description;
 	private Date lastLoginAt;
 	private Date createdAt;
 	private Date updatedAt;
@@ -79,6 +80,14 @@ public class CounsellorDTO {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Counsellor toEntity() {
