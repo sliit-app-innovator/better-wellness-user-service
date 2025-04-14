@@ -8,7 +8,7 @@ phases:
       - aws --version
       - REPOSITORY_URI=061039760516.dkr.ecr.ap-south-1.amazonaws.com/better-wellness-repo
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin $REPOSITORY_URI
-      - APP_VERSION=v2.0.0-$CODEBUILD_BUILD_ID
+      - APP_VERSION=v2.0.0
       - IMAGE_TAG=better-wellness-user-api-$APP_VERSION
   build:
     commands:
