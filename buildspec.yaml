@@ -31,7 +31,7 @@ phases:
       - echo "Post-build phase started..."
       - echo "Pushing Docker images to ECR..."
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI
 
       - echo "Writing image definitions file for ECS/K8s..."
       - printf '[{"name":"%s","imageUri":"%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
