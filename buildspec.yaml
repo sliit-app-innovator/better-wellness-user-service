@@ -41,7 +41,7 @@ phases:
 
       - echo Cloning manifest repo...
       - git clone https://github.com/sliit-app-innovator/better-wellness-sre-artifact.git
-      - cd better-wellness-sre-artifact/scripts/deploy-user-service.sh
+      - cd better-wellness-sre-artifact/scripts
       - chmod +x deploy-user-service.sh
       - ./deploy-user-service.sh
 
