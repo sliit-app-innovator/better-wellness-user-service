@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/better-wellness/user")
+@RequestMapping("/user-service")
 @Slf4j
 public class CounsellorController {
 
