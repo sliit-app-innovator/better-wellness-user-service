@@ -10,12 +10,14 @@ phases:
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin $REPOSITORY_URI
       - APP_VERSION=v2.0.0
       - IMAGE_TAG=better-wellness-user-api-$APP_VERSION
+
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:$IMAGE_TAG .
       - docker tag $REPOSITORY_URI:$IMAGE_TAG $REPOSITORY_URI:latest
+
   post_build:
     commands:
       - echo Build completed on `date`
@@ -28,6 +30,20 @@ phases:
       - echo $DOCKER_CONTAINER_NAME
       - echo printing imagedefinitions.json
       - cat imagedefinitions.json
+
+      # CD: Kubernetes Deployment
+      - echo Installing kubectl...
+      - curl -o kubectl https://amazon-eks.s3.ap-south-1.amazonaws.com/1.27.4/2023-09-14/bin/linux/amd64/kubectl
+      - chmod +x ./kubectl
+      - mv ./kubectl /usr/local/bin/
+      - echo Configuring kubectl with EKS...
+      - aws eks update-kubeconfig --region ap-south-1 --name sliit-better-wellness-cluster
+
+      - echo Cloning manifest repo...
+      - git clone https://github.com/sliit-app-innovator/better-wellness-sre-artifact.git
+      - cd better-wellness-sre-artifact/scripts/deploy-user-service.sh
+      - chmod +x deploy-user-service.sh
+      - ./deploy-user-service.sh
 
 artifacts:
   files:
