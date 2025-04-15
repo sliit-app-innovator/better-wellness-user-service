@@ -39,29 +39,29 @@ phases:
       - cat imagedefinitions.json
 
       # CD: Kubernetes Deployment
-      - echo "Installing kubectl manually for Amazon Linux 2023..."
-      - curl -Lo kubectl https://dl.k8s.io/release/v1.27.4/bin/linux/amd64/kubectl
-      - chmod +x kubectl
-      - mv kubectl /usr/local/bin/
-      - echo "✅ kubectl installed to /usr/local/bin/"
-      - kubectl version --client
+      #- echo "Installing kubectl manually for Amazon Linux 2023..."
+      #- curl -Lo kubectl https://dl.k8s.io/release/v1.27.4/bin/linux/amd64/kubectl
+      #- chmod +x kubectl
+      #- mv kubectl /usr/local/bin/
+      #- echo "✅ kubectl installed to /usr/local/bin/"
+      #- kubectl version --client
 
-      - echo "Updating kubeconfig to interact with EKS cluster..."
-      - aws eks update-kubeconfig --region $REGION --name $CLUSTER_NAME
+      #- echo "Updating kubeconfig to interact with EKS cluster..."
+      #- aws eks update-kubeconfig --region $REGION --name $CLUSTER_NAME
 
-      - echo "Updating kubeconfig..."
-      - mkdir -p ~/.kube
-      - aws eks update-kubeconfig --region ap-south-1 --name sliit-better-wellness-cluster --kubeconfig ~/.kube/config
-      - cat ~/.kube/config
-      - kubectl get nodes || echo "⚠️ Could not connect to EKS"
+      #- echo "Updating kubeconfig..."
+      #- mkdir -p ~/.kube
+      #- aws eks update-kubeconfig --region ap-south-1 --name sliit-better-wellness-cluster --kubeconfig ~/.kube/config
+     #- cat ~/.kube/config
+      #- kubectl get nodes || echo "⚠️ Could not connect to EKS"
 
-      - echo "Cloning deployment manifest repo..."
-      - git clone https://github.com/sliit-app-innovator/better-wellness-sre-artifact.git
-      - cd better-wellness-sre-artifact/scripts
+      #- echo "Cloning deployment manifest repo..."
+      #- git clone https://github.com/sliit-app-innovator/better-wellness-sre-artifact.git
+      #- cd better-wellness-sre-artifact/scripts
 
-      - echo "Deploying user service..."
-      - chmod +x deploy-user-service.sh
-      - ./deploy-user-service.sh
+      #- echo "Deploying user service..."
+      #- chmod +x deploy-user-service.sh
+      #- ./deploy-user-service.sh
 
 artifacts:
   files:
