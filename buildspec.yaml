@@ -39,13 +39,10 @@ phases:
       - cat imagedefinitions.json
 
       # CD: Kubernetes Deployment
-      - echo "Installing verified kubectl binary..."
-      - KUBECTL_URL="https://amazon-eks.s3.us-west-2.amazonaws.com/1.27.4/2023-09-14/bin/linux/amd64/kubectl"
-      - curl -s -o /tmp/kubectl "$KUBECTL_URL"
-      - file /tmp/kubectl
-      - chmod +x /tmp/kubectl
-      - mv /tmp/kubectl /usr/local/bin/kubectl
-      - kubectl version --client || { echo "❌ kubectl install failed"; exit 1; }
+      - echo "Installing kubectl using Amazon Linux 2 repo..."
+      - curl -o /etc/yum.repos.d/eks.repo https://amazon-eks.s3.us-west-2.amazonaws.com/1.27.4/2023-09-14/eks.repo
+      - yum install -y kubectl
+      - kubectl version --client
 
       - echo "Updating kubeconfig to interact with EKS cluster..."
       - aws eks update-kubeconfig --region $REGION --name $CLUSTER_NAME
