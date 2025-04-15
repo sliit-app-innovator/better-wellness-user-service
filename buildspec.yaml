@@ -51,10 +51,7 @@ phases:
 
       - echo "Updating kubeconfig..."
       - mkdir -p ~/.kube
-      - aws eks update-kubeconfig \
-        --region ap-south-1 \
-        --name sliit-better-wellness-cluster \
-        --kubeconfig ~/.kube/config
+      - aws eks update-kubeconfig --region ap-south-1 --name sliit-better-wellness-cluster --kubeconfig ~/.kube/config
       - cat ~/.kube/config
       - kubectl get nodes || echo "⚠️ Could not connect to EKS"
 
