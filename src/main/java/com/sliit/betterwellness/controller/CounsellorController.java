@@ -17,7 +17,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/user-service")
-@Slf4j
 public class CounsellorController {
 
 	private static final Logger log = LogManager.getLogger(CounsellorController.class);
